@@ -13,4 +13,8 @@ export class ServerService {
       servers, {headers: header});
   }
 
+  getServers() {
+    return this.http.get('https://angular4httprequest-c752d.firebaseio.com/data.json');
+  }
+
 }
