@@ -19,7 +19,7 @@ export class ServerService {
 
   getServers() {
     // map takes a obserable process the data and once finish rewraps the data into a observable
-    return this.http.get('https://angular4httprequest-c752d.firebaseio.com/data').map(
+    return this.http.get('https://angular4httprequest-c752d.firebaseio.com/data.json').map(
       (response: Response) => {
         const data = response.json();
         for (const server of data) {
@@ -30,6 +30,14 @@ export class ServerService {
     ).catch((error: Response) => {
       return Observable.throw('Something went wrong');
     });
+  }
+
+  getAppName() {
+    return this.http.get('https://angular4httprequest-c752d.firebaseio.com/appName.json').map(
+      (response: Response) => {
+        return response.json();
+      }
+    );
   }
 
 }
